@@ -1,5 +1,8 @@
 # react-tab-list
-
+* [Installation](#installation)
+* [Simple usage](#simple-usage)
+* [Active tab](#active-tab)
+* [Styles](#styles)
 
 ## Installation
 
