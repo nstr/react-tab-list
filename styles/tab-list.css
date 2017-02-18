@@ -1,0 +1,53 @@
+/* --------------------------------
+
+MAIN PART
+
+-------------------------------- */
+.react-tab-list {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0 0px;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+}
+.react-tab-list input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+.react-tab-list input[type="radio"]:checked + label {
+  color: rgba(0, 0, 0, 0.8);
+}
+.react-tab-list .tab, .react-tab-list label {
+  position: relative;
+  display: inline-block;
+  float: left;
+  width: auto;
+  padding: 10px 0px 15px;
+  margin: 0px 20px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #6b6b6b;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.react-tab-list .tab:hover, .react-tab-list label:hover {
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+.react-tab-list .tab-line {
+  position: absolute;
+  bottom: 0px;
+  left: 1px;
+  height: 3px;
+  background-color: #fbd900;
+  opacity: 0;
+}
+.react-tab-list .tab-line.animation {
+  opacity: 1;
+  -webkit-transition: -webkit-transform 0.5s, all 0.5s, opacity 0.5s ease-in;
+  -moz-transition: -moz-transform 0.5s, all 0.5s, opacity 0.5s ease-in;
+  transition: transform 0.5s, all 0.5s, opacity 0.5s ease-in;
+}

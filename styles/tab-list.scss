@@ -1,0 +1,81 @@
+/* --------------------------------
+
+VARIABLES PART
+
+-------------------------------- */
+
+$tl-text-color: #6b6b6b; //#6b6b6b
+$tl-text-color-hover: rgba(0, 0, 0, 0.8);
+$tl-text-color-checked: rgba(0, 0, 0, 0.8);
+
+$tl-font-size: 1.2rem;
+$tl-font-weight: 400;
+
+$tl-tab-padding: 10px 0px 15px;
+$tl-tab-list-margin: 0 0px;
+$tl-tab-margin: 0px 20px;
+$tl-tab-height: 100%;
+$tl-tab-width: 100%;
+
+$tl-underline: #fbd900;
+$tl-underline-height: 3px;
+$tl-bottom-border: rgba(0, 0, 0, 0.2);
+
+/* --------------------------------
+
+MAIN PART
+
+-------------------------------- */
+
+.react-tab-list {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  height: $tl-tab-height;
+  width: $tl-tab-width;
+  margin: $tl-tab-list-margin;
+  border-bottom: solid 1px $tl-bottom-border;
+
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+
+    &:checked + label {
+      color: $tl-text-color-checked;
+    }
+  }
+  .tab, label {
+    position: relative;
+    display: inline-block;
+    float: left;
+    width: auto;
+    padding: $tl-tab-padding;
+    margin: $tl-tab-margin;
+    font-size: $tl-font-size;
+    font-weight: $tl-font-weight;
+    color: $tl-text-color;
+    -webkit-transition: color 0.3s;
+    -moz-transition: color 0.3s;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $tl-text-color-hover;
+      cursor: pointer;
+    }
+  }
+
+  .tab-line {
+    position: absolute;
+    bottom: 0px;
+    left: 1px;
+    height: $tl-underline-height;
+    background-color: $tl-underline;
+    opacity: 0;
+    &.animation {
+      opacity: 1;
+      -webkit-transition: -webkit-transform 0.5s, all 0.5s, opacity 0.5s ease-in;
+      -moz-transition: -moz-transform 0.5s, all 0.5s, opacity 0.5s ease-in;
+      transition: transform 0.5s, all 0.5s, opacity 0.5s ease-in;
+    }
+  }
+}

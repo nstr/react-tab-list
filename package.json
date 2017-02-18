@@ -1,0 +1,35 @@
+{
+  "name": "react-tab-list",
+  "version": "1.0.0",
+  "description": "Tabs for React App",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "babel src --out-file lib/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/njnest/react-tab-list.git"
+  },
+  "keywords": [
+    "react",
+    "react-tabs",
+    "react-tab-list",
+    "tab-list"
+  ],
+  "peerDependencies": {
+    "react": "0.13.x || 0.14.x || 15.x.x"
+  },
+  "author": "Nick Nesterov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/njnest/react-tab-list/issues"
+  },
+  "homepage": "https://github.com/njnest/react-tab-list#readme",
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0"
+  }
+}
