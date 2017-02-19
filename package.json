@@ -1,6 +1,6 @@
 {
   "name": "react-tab-list",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tabs for React App",
   "main": "lib/index.js",
   "scripts": {
