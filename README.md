@@ -4,8 +4,6 @@
 * [Active tab](#active-tab)
 * [Styles](#styles)
 
-![demo](https://s3-eu-west-1.amazonaws.com/njnest-opensource/npm/react-tab-list.gif)
-
 ## Installation
 
 ```
