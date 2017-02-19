@@ -47,8 +47,8 @@ export default class TabList extends React.Component{
       });
     }
     else {
-      let activeTabIndex = this.props.tabs.filter((tab, index) => (tab[Object.keys(activeTab)[0]] === activeTab[Object.keys(activeTab)[0]]) ? index : null);
-      const index = activeTabIndex.length > 0 ? activeTabIndex[0] : 0;
+      let activeTabIndex = this.props.tabs.filter((tab, index) => (tab[Object.keys(activeTab)[0]] === activeTab[Object.keys(activeTab)[0]]) ? tab["index"] = index : null);
+      const index = activeTabIndex.length > 0 ? activeTabIndex[0].index : 0;
       let elemnt = document.getElementById(`label-tab-item-${index}`);
       document.getElementById("tab-line").style.width = `${elemnt.offsetWidth}px`;
       setTimeout(function () {
