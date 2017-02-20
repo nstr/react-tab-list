@@ -25,7 +25,7 @@ export default class TabList extends React.Component{
 
     setTimeout(function () {
       this.setState({
-        tabLineClass: "tab-line animation"
+        tabLineClass: "tab-line react-tab-animation"
       });
     }.bind(this), 500);
   }
