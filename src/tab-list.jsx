@@ -23,9 +23,9 @@ export default class TabList extends React.Component{
     else {
       let elemnt = document.getElementById(`label-${this.state.id}-tab-item-0`);
       document.getElementById(`${this.state.id}-tab-line`).style.width = `${elemnt.offsetWidth}px`;
-      setTimeout(() => {
+      setTimeout(function(){
         document.getElementById(`${this.state.id}-tab-line`).style.left = `${elemnt.offsetLeft}px`;
-      }, this, 10);
+      }.bind(this), 10);
     }
 
     setTimeout(function () {
@@ -45,7 +45,7 @@ export default class TabList extends React.Component{
       document.getElementById(`${this.state.id}-tab-line`).style.width = `${elemnt.offsetWidth}px`;
       setTimeout(function () {
         document.getElementById(`${this.state.id}-tab-line`).style.left = `${elemnt.offsetLeft}px`;
-      }, 0);
+      }.bind(this), 0);
       this.setState({
         activeTab: activeTab,
         activeTabIndex: activeTab.index
@@ -58,7 +58,7 @@ export default class TabList extends React.Component{
       document.getElementById(`${this.state.id}-tab-line`).style.width = `${elemnt.offsetWidth}px`;
       setTimeout(function () {
         document.getElementById(`${this.state.id}-tab-line`).style.left = `${elemnt.offsetLeft}px`;
-      }, 0);
+      }.bind(this), 0);
       this.setState({
         activeTab: activeTab,
         activeTabIndex: index
