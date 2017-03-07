@@ -1,9 +1,14 @@
 import React from "react";
 
+function getRandomInt() {
+  return Math.floor(Math.random() * (1000000000000 - 1 + 1)) + 1;
+}
+
 export default class TabList extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
+      id: `${getRandomInt()}`,
       activeTab: this.props.activeTab,
       activeTabIndex: 0,
       tabLineClass: "tab-line"
@@ -16,11 +21,11 @@ export default class TabList extends React.Component{
       this.defineActiveTab(this.props.activeTab);
     }
     else {
-      let elemnt = document.getElementById(`label-tab-item-0`);
-      document.getElementById("tab-line").style.width = `${elemnt.offsetWidth}px`;
-      setTimeout(function () {
-        document.getElementById("tab-line").style.left = `${elemnt.offsetLeft}px`;
-      }, 10);
+      let elemnt = document.getElementById(`label-${this.state.id}-tab-item-0`);
+      document.getElementById(`${this.state.id}-tab-line`).style.width = `${elemnt.offsetWidth}px`;
+      setTimeout(() => {
+        document.getElementById(`${this.state.id}-tab-line`).style.left = `${elemnt.offsetLeft}px`;
+      }, this, 10);
     }
 
     setTimeout(function () {
@@ -36,10 +41,10 @@ export default class TabList extends React.Component{
   }
   defineActiveTab(activeTab) {
     if (activeTab.index) {
-      let elemnt = document.getElementById(`label-tab-item-${activeTab.index}`);
-      document.getElementById("tab-line").style.width = `${elemnt.offsetWidth}px`;
+      let elemnt = document.getElementById(`label-${this.state.id}-tab-item-${activeTab.index}`);
+      document.getElementById(`${this.state.id}-tab-line`).style.width = `${elemnt.offsetWidth}px`;
       setTimeout(function () {
-        document.getElementById("tab-line").style.left = `${elemnt.offsetLeft}px`;
+        document.getElementById(`${this.state.id}-tab-line`).style.left = `${elemnt.offsetLeft}px`;
       }, 0);
       this.setState({
         activeTab: activeTab,
@@ -49,10 +54,10 @@ export default class TabList extends React.Component{
     else {
       let activeTabIndex = this.props.tabs.filter((tab, index) => (tab[Object.keys(activeTab)[0]] === activeTab[Object.keys(activeTab)[0]]) ? tab["index"] = index : null);
       const index = activeTabIndex.length > 0 ? activeTabIndex[0].index : 0;
-      let elemnt = document.getElementById(`label-tab-item-${index}`);
-      document.getElementById("tab-line").style.width = `${elemnt.offsetWidth}px`;
+      let elemnt = document.getElementById(`label-${this.state.id}-tab-item-${index}`);
+      document.getElementById(`${this.state.id}-tab-line`).style.width = `${elemnt.offsetWidth}px`;
       setTimeout(function () {
-        document.getElementById("tab-line").style.left = `${elemnt.offsetLeft}px`;
+        document.getElementById(`${this.state.id}-tab-line`).style.left = `${elemnt.offsetLeft}px`;
       }, 0);
       this.setState({
         activeTab: activeTab,
@@ -62,10 +67,10 @@ export default class TabList extends React.Component{
   }
   selectThis(index) {
     if (!this.props.blockup) {
-      let labelId = `label-tab-item-${index}`;
+      let labelId = `label-${this.state.id}-tab-item-${index}`;
       let elemnt = document.getElementById(labelId);
-      document.getElementById("tab-line").style.width = `${elemnt.offsetWidth}px`;
-      document.getElementById("tab-line").style.left = `${elemnt.offsetLeft}px`;
+      document.getElementById(`${this.state.id}-tab-line`).style.width = `${elemnt.offsetWidth}px`;
+      document.getElementById(`${this.state.id}-tab-line`).style.left = `${elemnt.offsetLeft}px`;
       if (this.props.onTab) this.props.onTab(this.props.tabs[index]);
       this.setState({
         activeTabIndex: index
@@ -78,17 +83,24 @@ export default class TabList extends React.Component{
       <div className="react-tab-list">
         {
           tabs.map(function(tab, index) {
-            const id = `tab-item-${index}`;
+            const id = `${this.state.id}-tab-item-${index}`;
             return (
               <div key={index} className={tab.className}>
-                <input type="radio" onClick={() => this.selectThis(index)} name="tab-items" id={id} checked={this.state.activeTabIndex === index} readOnly/>
-                <label className="tab" id={`label-${id}`} htmlFor={id}>{tab.htmlBefore} {tab.name} {tab.htmlAfter}</label>
+                <input id={id}
+                  type="radio" onClick={() => this.selectThis(index)} name={`${this.state.id}-tab-items`}
+                  checked={this.state.activeTabIndex === index} readOnly/>
+                <label id={`label-${id}`}
+                  htmlFor={id} className="tab">{tab.htmlBefore} {tab.name} {tab.htmlAfter}</label>
               </div>
             );
           }, this)
         }
-        <span className={this.state.tabLineClass} id="tab-line"></span>
+        <span className={this.state.tabLineClass} id={`${this.state.id}-tab-line`}></span>
       </div>
     );
   }
 }
+
+TabList.PropTypes = {
+  tabs: React.PropTypes.array.isRequired
+};
