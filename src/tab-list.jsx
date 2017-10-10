@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function getRandomInt() {
   return Math.floor(Math.random() * (1000000000000 - 1 + 1)) + 1;
@@ -40,11 +41,12 @@ export default class TabList extends React.Component{
     }
   }
   defineActiveTab(activeTab) {
+    const tabLine = document.getElementById(`${this.state.id}-tab-line`);
     if (activeTab.index) {
       let elemnt = document.getElementById(`label-${this.state.id}-tab-item-${activeTab.index}`);
-      document.getElementById(`${this.state.id}-tab-line`).style.width = `${elemnt.offsetWidth}px`;
+      if (tabLine.style) tabLine.style.width = `${elemnt.offsetWidth}px`;
       setTimeout(function () {
-        document.getElementById(`${this.state.id}-tab-line`).style.left = `${elemnt.offsetLeft}px`;
+        if (tabLine.style) tabLine.style.left = `${elemnt.offsetLeft}px`;
       }.bind(this), 0);
       this.setState({
         activeTab: activeTab,
@@ -55,9 +57,9 @@ export default class TabList extends React.Component{
       let activeTabIndex = this.props.tabs.filter((tab, index) => (tab[Object.keys(activeTab)[0]] === activeTab[Object.keys(activeTab)[0]]) ? tab["index"] = index : null);
       const index = activeTabIndex.length > 0 ? activeTabIndex[0].index : 0;
       let elemnt = document.getElementById(`label-${this.state.id}-tab-item-${index}`);
-      document.getElementById(`${this.state.id}-tab-line`).style.width = `${elemnt.offsetWidth}px`;
+      if (tabLine.style) tabLine.style.width = `${elemnt.offsetWidth}px`;
       setTimeout(function () {
-        document.getElementById(`${this.state.id}-tab-line`).style.left = `${elemnt.offsetLeft}px`;
+        if (tabLine.style) tabLine.style.left = `${elemnt.offsetLeft}px`;
       }.bind(this), 0);
       this.setState({
         activeTab: activeTab,
@@ -102,5 +104,5 @@ export default class TabList extends React.Component{
 }
 
 TabList.PropTypes = {
-  tabs: React.PropTypes.array.isRequired
+  tabs: PropTypes.array.isRequired
 };
