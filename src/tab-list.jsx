@@ -103,6 +103,6 @@ export default class TabList extends React.Component{
   }
 }
 
-TabList.PropTypes = {
+TabList.propTypes = {
   tabs: PropTypes.array.isRequired
 };
